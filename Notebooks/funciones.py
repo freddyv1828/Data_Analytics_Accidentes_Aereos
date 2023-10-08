@@ -38,3 +38,4 @@ def valores_nulos_columna(df, columna):
     df_nulos["index"] = df_nulos.index
     
     return df_nulos
+
