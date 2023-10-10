@@ -39,3 +39,24 @@ def valores_nulos_columna(df, columna):
     
     return df_nulos
 
+# Formatear fecha
+def formatear_fecha(cadena_fecha):
+    match = re.search(r'(\w+\s\d{1,2},\s\d{4})', cadena_fecha)
+    if match:
+        fecha_str = match.group(1)
+        try:
+            fecha_dt = pd.to_datetime(fecha_str)
+            return fecha_dt.strftime('%Y-%m-%d')
+        except:
+            return 'Fecha inválida'
+    else:
+        return 'Formato inválido'
+    
+
+# Funcion para extraer el año de una fecha en formato yy-mm-dd
+def funcion_year(fecha):
+    if pd.notna(fecha):
+        if re.match(r'^\d{4}-\d{2}-\d{2}$', fecha):
+            return fecha.split('-')[0]
+    return 'Dato no disponible'
+
